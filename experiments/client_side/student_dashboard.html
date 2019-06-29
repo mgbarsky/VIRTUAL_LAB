@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Libre lab</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    		<script src="lib/knockout-3.5.0.js" defer></script>
+    		<script src="lib/jquery-3.4.1.min.js" defer></script>
+    		<script src="js/sample_data.js" defer></script>
+    		<script src="js/local_storage.js" defer></script>
+    		<script src="js/app.js" defer></script>
+        <script src="js/navigation.js" defer></script>
+    		<script src="js/student_templates.js" defer></script>
+    		<script src="js/gui.js" defer></script>
+    		<script src="js/student_dashboard.js" defer></script>
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+    </head>
+    <body>
+        <nav>
+            <div class="left long">
+                <h1 class="long"><span class="icon-pure_logo">A</span></h1>
+                <div class="centered">
+                    <h1>Game: Python 101</h1>
+                    <h2>Total Score: 32</h2>
+                </div>
+            </div>
+            <div class="right">
+                <div class="text">
+                    <h1>Arthur</h1>
+                    <h2>Logged in as student</h2>
+                </div>
+                <div>
+                    <span class="icon-font" id="user">&#59761;</span>
+                </div>
+            </div>
+        </nav>
+          <div class="student-dashboard-container" data-bind="visible: pageState() === PAGE_STATE.BOARD">
+
+              <!-- for side scrolling container-->
+              <div>
+                  <div>
+                      <span class="icon-font rect-button-left-arrow"
+                      onclick="studentDashboard.scrollBoard(DIRECTION.PREVIOUS)">&#59932;</span>
+                  </div>
+                  <levels-board class="student-button-board" id="levels-board"></levels-board>
+                  <div>
+                      <span class="icon-font rect-button-right-arrow"
+                      onclick="studentDashboard.scrollBoard(DIRECTION.NEXT)">&#59932;</span>
+                  </div>
+              </div>
+
+              <!-- for problems and challenge container-->
+              <div>
+                  <div class="student-problems-container">
+                      <h3>Problem of the day</h3>
+                      <p>Move turtles extra extra extra extra extra extra extra extra extra extra extra</p>
+                  </div>
+                  <div class="challenge-container">
+                      <h3>Next scheduled challenge</h3>
+                      <p>Function challenge - Oct 15</p>
+                  </div>
+              </div>
+
+              <!-- for leaderboard -->
+              <div>
+                  <div class="leaderboard-container">
+                      <h3>Leaderboard</h3>
+                      <div>
+                          <h4>Rank</h4>
+                          <hr>
+                          <p>1</p>
+                          <p>2</p>
+                      </div>
+                      <div>
+                          <h4>User</h4>
+                          <hr>
+                          <p>mbarsky</p>
+                          <p>Arthur</p>
+                      </div>
+                      <div>
+                          <h4>Score</h4>
+                          <hr>
+                          <p>100</p>
+                          <p>99</p>
+                      </div>
+
+                  </div>
+              </div>
+            </div>
+
+              <!-- Problem list -->
+              <div data-bind="visible: pageState() === PAGE_STATE.PROBLEM_LIST">
+                <div class="title-bar problems-obj" data-bind="click: previousPage">
+                        <h1 data-bind="text: levelName"></h1>
+            		</div>
+
+            		<div class="student-list-container">
+            			<div class="check-board">
+            				<div class="check-board-square problems-correct"></div>
+            				<div class="check-board-square problems-correct"></div>
+            				<div class="check-board-square problems-incorrect"></div>
+            				<div class="check-board-square problems-correct"></div>
+            				<div class="check-board-square problems-correct"></div>
+            				<div class="check-board-square problems-incorrect"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            				<div class="check-board-square problems-unfinished"></div>
+            			</div>
+            		</div>
+            		<problem-list class="container list-panel"></problem-list>
+              </div>
+          </div>
+
+    </body>
+</html>

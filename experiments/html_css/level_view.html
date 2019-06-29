@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Libre lab</title>	
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/gui.js"></script>
+        <link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+    </head> 
+    <body>
+        <nav>
+            <div class="left long">
+                <h1 class="long" onclick="window.location.href='dashboard_view.html'"><span class="icon-pure_logo">A</span></h1>
+                <div class="centered">
+                    <h1 onclick="window.location.href='dashboard_view.html'"><span class="icon-font">&#59968</span>Levels</h1> 
+                </div>
+            </div>
+            <div class="right">
+                <div class="text">
+                    <h1>mbarsky</h1>
+                    <h2>Logged in as instructor</h2>	
+                </div>
+                <span class="icon-font" id="user">&#59761 </span>
+            </div>
+        </nav>
+
+        <div class="title-bar levels-obj">
+            <h1>All levels</h1>
+            <div class="right-icons">
+                <span class="icon-font button title-bar-button" title="search">&#59782</span>
+                <span class="icon-font button title-bar-button" title="filter">&#59995</span>
+                <span class="icon-font button title-bar-button" title="sort">&#59980 </span>
+                <span class="icon-font button title-bar-button" title="edit">&#59653 </span>
+                <span class="icon-font button title-bar-button" title="delete">&#59820 </span>
+                <div class="drop-down">
+                    <span class="icon-font button title-bar-button">&#58956 </span>
+                    <div class="drop-down-list-container levels-obj">
+                        <ul class="single-column no-scroll indent-items">
+                            <li>Rename</li>
+                            <li>Edit</li>
+                            <li>Delete</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container body-button-panel">
+            <span class="new-group-btn levels-obj" onclick="window.location.href='new_level_1.html'">New</span>
+        </div>
+        <div class="container list-panel">	
+            <ul>
+                <li>
+                    <!--<span class="icon-stack white"> </span>-->
+                    <span class="level-icons"><img src="images/variables.png"></span>
+                    Variables
+                </li>
+                
+                <li>
+                    <span class="level-icons"><img src="images/Lists.png"></span>
+                    <!--<span class="icon-stack white"> </span>-->
+                    Lists
+                </li>
+                <li>
+                    <span class="level-icons"><img src="images/Functions.png"></span>
+                    <!--<span class="icon-stack white"> </span>-->
+                    Functions
+                </li>
+                <li>
+                    <span class="level-icons"><img src="images/Loops.png"></span>
+                    <!--<span class="icon-stack white"> </span>-->
+                    Loops
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
+

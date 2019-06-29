@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Libre lab</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">       
+
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+		<script src="lib/knockout-3.5.0.js" defer></script>
+
+		<script src="js/app.js" defer></script>
+		<script src="js/student_level_lists.js" defer></script>
+
+		<link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+	</head>
+	<body>
+		<nav>
+			<div class="left long">
+				<h1 class="long"><span class="icon-pure_logo">A</span></h1>
+				<div class="centered">
+					<h1>Game: <span data-bind="text: game_name"></span></h1>
+					<h2>Total Score: 32</h2>
+				</div>
+			</div>
+			<div class="right">
+				<div class="text">
+					<h1 data-bind="text: screen_name"></h1>
+					<h2>Logged in as student</h2>	
+				</div>
+				<div>
+					<span class="icon-font" id="user">&#59761 </span>	
+				</div>
+			</div>
+		</nav>
+		<div class="title-bar problems-obj">
+            <h1 data-bind="text: level_title"></h1>
+            <!--
+			<div class="right-icons">
+				<span class="icon-font button title-bar-button" title="search">&#59782</span>
+				<span class="icon-font button title-bar-button" title="filter">&#59995</span>
+				<span class="icon-font button title-bar-button" title="sort">&#59980 </span>
+				<span class="icon-font button title-bar-button" title="edit">&#59653 </span>
+				<span class="icon-font button title-bar-button" title="delete">&#59820 </span>
+				<div class="drop-down">
+					<span class="icon-font button title-bar-button">&#58956 </span>
+					<div class="drop-down-list-container problems-obj">
+						<ul class="single-column no-scroll indent-items">
+							<li>Rename</li>
+							<li>Edit</li>
+							<li>Delete</li>
+						</ul>
+					</div>
+				</div>
+            </div>
+            -->
+		</div>
+
+		<div class="student-list-container">
+			<div class="check-board">
+				<div class="check-board-square problems-correct"></div>
+				<div class="check-board-square problems-correct"></div>
+				<div class="check-board-square problems-incorrect"></div>
+				<div class="check-board-square problems-correct"></div>
+				<div class="check-board-square problems-correct"></div>
+				<div class="check-board-square problems-incorrect"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+				<div class="check-board-square problems-unfinished"></div>
+			</div>
+		</div>
+		<div class="container list-panel">	
+			<ul data-bind="foreach: problems_list">
+				<li data-bind="click: $parent.go_to_problem">
+					<span class="icon-font green">F</span>
+					<span data-bind="text: title"></span>
+				</li>
+			</ul>
+		</div>        
+	</body>
+</html>
+

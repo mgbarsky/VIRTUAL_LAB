@@ -1,0 +1,71 @@
+.info-div{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.lab-div{
+    flex: 4;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    margin-right: 1%;
+}
+
+#codebox{
+    max-width: 100%;
+    position: absolute;
+    width: 100%;
+    margin-top: 12px;
+}
+
+div.black{
+    background-color: rgb(44, 44, 44);
+    border-color:black;
+}
+
+.output-div{
+    float:bottom;
+    margin-top: 0.5vw;
+    width: 66vw;
+    min-width: 15vw;
+    height: 12vw;
+    overflow: auto;
+    overflow-y: scroll;
+}
+
+#output{
+    padding:10px;
+    font-family: monospace;
+    color:white;
+    overflow:auto;
+}
+
+div.north{
+    margin-top: 0.5vw;
+    margin-right: 1vw;
+}
+
+main.no-trim{
+    margin-top: 0.5vw;
+}
+
+div.info-obj{
+    text-align: center;
+    flex: 1;
+}
+
+div.div-obj{
+    flex: 7;
+}
+
+main.fix{
+    width: 100%;
+    min-width: 50vw;
+    position: fixed;
+    flex-wrap: nowrap;
+}
+
+div.smalloutput{
+    max-width: 40vw;
+}

@@ -1,0 +1,286 @@
+/* title-bar */
+.title-bar {
+	margin-top:80px;
+	min-width: 7cm;
+	position: relative;	
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /* modified */
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.title-bar h1 {
+	color: rgb(255, 255, 255);
+	font-size: 1.5em;
+	font-weight: 400;
+	display: inline-block;
+	margin-left: 40px;
+}
+
+
+.title-bar h1 span {
+	cursor: pointer;
+}
+
+
+/* right-icons for title bar */
+.right-icons {
+	 margin-left: 70px; /*needed for aligning when title bar becomes very small*/
+	font-size: 1.5em;
+	display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+	z-index: 1;
+	right: 0;
+}
+
+.right-icons .icon-font{
+	margin-right: 0.5em;
+	padding: 0.5em;
+	color: rgb(255, 255, 255);
+}
+
+.right-icons .icon-font:hover {
+	background-color: rgba(200,200,240,0.7);
+}
+
+.right-icons .drop-down {
+	text-decoration:none;
+	display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+	cursor: pointer;
+	position: relative;
+}
+
+.drop-down .drop-down-list-container{
+	width:6cm;
+	display: none;
+	position: absolute;
+	border: none;
+	top: 2em;
+	color: white;
+	/*background-color: rgb( 222,152,53);*/
+}
+
+.drop-down:hover .drop-down-list-container {
+	display: block;
+	right: 0;
+}
+
+.drop-down:hover > .dropdown-form-container {
+	display: inline-block;
+	right: 0;
+}
+
+.dropdown-form-container{
+	position: absolute;
+	top: 2em;
+	display: none;
+	padding: 1ex;
+}
+
+.dropdown-form-container .input-group input[type="button"]{
+	width: 10%
+}
+/* end of right-icons */
+/* end of title-bar */
+
+
+li {	
+  box-sizing: border-box;
+  cursor:pointer;
+  position: relative;
+ /* display: -ms-flexbox;
+  display: -webkit-flex;
+  display:flex;
+  align-items:center;
+  -webkit-align-items:center;
+  -ms-align-items:center; */
+  padding: 1ex 2ex 1ex 0ex;
+  font-size: large;
+  /*max-width: 100%;*/
+  max-width: 100vw;
+  height :2.5em;
+  min-height:2.5em;
+
+  overflow-y: hidden;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*to be removed(replace it with li.selected)*/
+
+
+/*added */
+
+/*li.active {
+	background-color:rgb(200,200,240);
+}*/
+li:focus {
+	background-color:rgb(200,200,240);
+}
+
+
+.list.icon-font{	
+	
+	padding:0.5em;
+	font-size: large;
+}
+
+ul{
+	
+
+	list-style-type: none;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+
+	height: 300px;
+	width:100%;
+	max-height:500px;
+	overflow-y:auto;
+	overflow-x:auto;
+	padding-left:40px;
+	padding-right: 40px;
+  
+}
+.indent-items li{
+	padding:0 30px;
+}
+.single-column{
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  overflow:auto;
+}
+.no-scroll{
+   overflow:visible;
+}
+.single-column li{
+	width:100%;
+}
+ul input[type=checkbox] {
+	margin-left: 2em;
+	margin-right: 2em;
+}
+ul li span{
+	padding:0em;
+}
+ul li.selectedRow{
+	background-color: #eee;
+	
+}
+
+
+ul>span {
+	width:3.5cm;
+	margin-bottom:0.5em;
+}
+ul .label{
+	padding:0.5em;
+	display: inline-block;
+	width:70%;
+	display: -ms-flexbox;
+    display: -webkit-flex;
+	display: flex;
+	align-items:center;
+	overflow: hidden;
+}
+
+ul .item-info {
+	margin-left: 1em;
+	left:0;
+}
+ul .item-info aside{
+	display: none;
+	position: absolute;
+	top: 0;
+	margin-left: 2em;
+	z-index:1;
+	opacity:0.8;
+	background-color: rgba(222,222,222,1);
+	padding: 1em;
+	cursor: pointer;
+	width: 3cm;
+	font-size: medium;
+}
+
+ul .item-info:hover>aside,.item-info>span{
+	cursor: pointer;
+	display: block;
+}
+/* end of list */
+
+
+/*levels icons */
+.level-icons {
+	margin-right: 20px;
+}
+.level-icons > img {
+	display: inline-block;
+	width: 30px;
+	vertical-align:middle;
+}
+
+
+/*added */
+.new-group-btn{
+	display:-webkit-inline-flex;
+	display:-ms-inline-flex;
+	display: inline-flex;
+	align-items:center;
+	-webkit-align-items:center;
+	justify-content:center;
+	-webkit-justify-content:center;
+	font-size: large;
+	padding: 0.3em;	
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	min-width:120px;
+}
+
+.green,.red {
+	font-size: 1.3em;
+	margin-right: 20px;
+	display: inline-block;
+	vertical-align:middle;
+}
+
+.green {
+	color: green;
+}
+.red { 
+	color: red;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/*for student dashboard */
+.student-problems-container > h3, .challenge-container > h3 {
+	background-color: rgb(0,51,204);
+}
+
+.leaderboard-container > h3 {
+	background-color:  	rgb(102,102,0);
+}

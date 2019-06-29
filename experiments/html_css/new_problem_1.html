@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Libre lab</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">       
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+    </head>
+    
+    <body>
+        <nav>
+            <div class="left long">
+                <h1 class="long" onclick="window.location.href='dashboard_view.html'"><span class="icon-pure_logo">A</span></h1>
+                <div class="centered">
+                    <h1 onclick="window.location.href='list_view.html'"><span class="icon-font">&#59968</span>Problems / New Problem</h1> 
+                </div>
+            </div>
+            <div class="right">
+                <div class="right">
+                    <div class="text">
+                        <h1>Marina B</h1>
+                        <h2>Logged in as instructor</h2>	
+                    </div>
+                    <span class="icon-font" id="user">&#59761 </span>	
+                </div>
+            </div>
+        </nav>
+    
+        <div class="title-bar problems-obj">
+                <h1 class="problem">New problem 1/4: general</h1>
+        </div>
+    
+        <div class="large-container">
+            <form>
+                
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" placeholder="Name" id="name" class="long"/>
+                </div>
+                
+                <div class="input-group">
+                    <label >Type</label>
+                    <select class="wide long">
+                        <option>--Select Type--</option>
+                        <option>One</option>
+                        <option>Two</option>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label class="contents">Comments</label>
+                    <textarea class="input"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Weight</label>
+                    <input type="text" placeholder="1" id="weight" class="long">
+                </div>
+    
+                <div class="input-group">
+                    <label >Tags</label>
+                    <select class="long wide">
+                        <option></option>
+                        <option>One</option>
+                        <option>Two</option>
+                    </select>
+                    <input type="file" value="+">  
+                </div>
+                
+                <div class="controls">
+                    <input type="button" class="btn-ok" value="&#8594;" onclick="window.location.href='new_problem_2.html'" />
+                    <input type="button" class="btn-cancel" value="&#10006;" onclick=""/>
+                    <input type="button" class="btn-ok" value="&#10003;" onclick="" />
+                </div>
+            </form>
+        </div>
+        
+    </body>
+</html>

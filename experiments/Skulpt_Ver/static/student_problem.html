@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Libre lab</title>	
+		<link rel="stylesheet" href="css/style.css">
+		
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+        <script src="lib/knockout-3.5.0.js" defer></script>
+        
+		<script src="js/app.js" defer></script>
+        <script src="js/student_problem.js" defer></script>
+        
+		<link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+	</head> 
+	<body>
+        <nav>
+            <div class="left long">
+                <h1 class="long"><span class="icon-pure_logo">A</span></h1>
+            </div>
+            <div class="right">
+                <div class="text">
+                    <h1 data-bind="text: screen_name"></h1>
+                    <h2>Logged in as student</h2>	
+                </div>
+                <div>
+                    <span class="icon-font" id="user">&#59761 </span>	
+                </div>
+            </div>
+        </nav>
+        
+        <div class="title-bar problems-obj">
+            <h1 class="problem"> <span data-bind="text: level_title"></span> / <span data-bind="text: problem.title"></span></h1>
+        </div>
+
+        <div class="large-container">
+            <form>
+                <div class="input-group">
+                    <label for="name">Problem</label>
+                    <input type="text" placeholder="Name" id="name" class="long" readonly data-bind="value: problem.title"/>
+                </div>
+
+                <div class="input-group">
+                    <label>Points</label>
+                    <input type="text" placeholder="1" id="weight" class="long" readonly data-bind="value: problem.weight">
+                </div>
+
+                <div class="textinput-group">
+                    <label>Instructions</label>
+                    <textarea data-bind="textInput: problem.instructions" readonly></textarea>
+                </div>
+            
+                <div class="textinput-group">
+                    <label>Code</label>
+                    <textarea data-bind="textInput: problem.starter_code"></textarea>
+                </div> 
+
+                <div class="textinput-group">
+                    <label>Console</label>
+                    <textarea></textarea>
+                </div>      
+                
+                <div class="controls">
+                    <input type="button" class="btn-ok" value="&#9658;" title="Run">
+                    <input type="button" class="btn-ok" value="&#10003;" data-bind="click: save_student_problem"/>
+                    <input type="button" class="btn-cancel" value="&#10006;" onclick="window.location.href='student_level_lists.html'"/>
+                </div>
+            </form>
+        </div>
+	</body>
+</html>
+

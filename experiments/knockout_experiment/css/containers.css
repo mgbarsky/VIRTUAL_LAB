@@ -1,0 +1,133 @@
+.container{
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display:flex;
+}
+.content {
+	height:75vh;
+	margin:0;
+	padding:0;
+	/*display:flex;*/
+	/*margin-top: 8em;/*to account for the header, which is out of flow*/
+	/*no need for margin top; header is in normal flow now*/
+}
+.container.small{
+	width:20em;
+	height:24em;
+	max-height:194px;
+	display:block;
+}
+.container.wide{
+	width:100vw;
+	display:inline-block;
+	height:24em;
+}
+.container.small .list ul{
+	max-height:inherit;
+	display: flex;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	flex-wrap: nowrap;
+	-webkit-flex-wrap: nowrap;
+	-ms-flex-wrap:nowrap;
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+.body-button-panel{
+	margin-top:15px;
+	margin-left:40px;
+	height:2em;
+	width:80vw;
+	min-width:80vw;
+
+	margin-bottom: 40px;
+}
+.list-panel{
+	height:300px;
+	width:414px;
+	max-width:700px;
+}
+.centered-container{
+	height: 75vh;
+	min-width: 11cm;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.centered-container h1{
+	text-align: center;
+}
+
+/* container which contents are centered. Used for log in, button list*/
+.centered-container h1{
+	text-align: center;
+}
+
+.medium-container{
+	width: 7cm;
+}
+
+.large-container{
+	width: 11cm;
+	margin-left: 70px;
+	margin-top: 3%;
+}
+
+
+/*added */
+.whole-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.whole-container .large-container {
+	margin-left: 0px;
+}
+
+.problem-container {
+	width: 11cm;
+	margin-top: 0px;
+	
+}
+
+.problem-container .title-bar {
+	border : 1px solid black;
+}
+
+.problem-container .list-panel {
+	margin-top: 0px;
+	margin-left: 0px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	
+}
+
+.whole-container .large-container {
+	margin-top: 0px;
+}
+
+.large-container .title-bar  {
+	border: 1px solid black;
+}
+
+.large-container .list-panel {
+	margin-top: 0px;
+	margin-left: 0px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
+

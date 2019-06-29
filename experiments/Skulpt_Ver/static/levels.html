@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Libre lab</title>	
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="lib/codemirror/theme/mbo.css">
+        <script type="text/javascript" src="lib/codemirror/lib/codemirror.js"></script>
+        <script type="text/javascript" src="lib/codemirror/mode/python/python.js"></script>
+		<script src="lib/skulpt/skulpt.min.js" defer></script>
+		<script src="lib/skulpt/skulpt-stdlib.js" defer></script>
+
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+		<script src="lib/knockout-3.5.0.js" defer></script>
+		<script src="js/app.js" defer></script>
+		<script src="js/levels.js" defer></script>
+		<link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+	</head> 
+	<body>
+	<nav>
+		<div class="left long">
+				<h1 class="long"><span class="icon-pure_logo">A</span></h1>
+		</div>
+		<div class="right">
+			<div class="text">
+				<h1>Marina B</h1>
+				<h2>Logged in as instructor</h2>	
+			</div>
+			<span class="icon-font" id="user">&#59761 </span>	
+		</div>
+	</nav>	
+		
+	<!--PROBLEM LIST PANE-->
+	<!-- ko if: $root.state() == PAGE_STATE.LIST --> 
+	<div class="title-bar levels-obj">
+		<h1>All Levels</h1>
+		<div class="right-icons">
+			<!--<span class="icon-font button title-bar-button" title="search">&#59782</span>
+			<span class="icon-font button title-bar-button" title="filter">&#59995</span>
+			<span class="icon-font button title-bar-button" title="sort">&#59980 </span>
+			<span class="icon-font button title-bar-button" title="edit">&vert;</span>-->
+			<!-- ko if: $root.selectedItem()-->
+			<span class="icon-font button title-bar-button" title="edit" data-bind="click: editLevel">&#59653</span>
+			<span class="icon-font button title-bar-button" title="delete" data-bind="click: deleteLevel">&#59820</span>
+			<!-- /ko -->
+		</div>
+	</div>
+	<div class="container body-button-panel">
+		<span class="new-group-btn levels-obj" data-bind="click: newLevel">New</span>
+	</div>
+	<div class="container list-panel">		
+		<ul data-bind="foreach: itemList">
+			<li data-bind="click: selectMe, style: { background: isSelected() ? 'lightblue' : 'white' }">	
+				<span class="level-icons"><img data-bind="attr:{src: 'user_images/' + image}"></span>				
+				<span data-bind="text: title"></span>
+			</li>				
+		</ul>
+	</div>		
+	<!-- /ko -->
+	
+	<!--PROBLEM WIZARD NAVIGATION MENU-->
+	<!-- ko if: $root.state() != PAGE_STATE.LIST --> 
+	<div class="title-bar levels-obj">
+        <h1 class="problem">New level <span data-bind='text: $root.state()'>&nbsp;</span>/2: general</h1>
+	</div>
+	<!--/ko-->
+
+	<!--PROBLEM WIZARD STEP 1: GENERAL-->
+	<!-- ko if: $root.state() == PAGE_STATE.L1 --> 
+    <div class="large-container">
+		<form>
+			<div class="input-group">
+				<label for="name">Name</label>
+				<input type="text" class="long" data-bind="textInput: level.title"/>
+			</div>
+
+			<div class="input-group">
+				<label >Image</label>
+				<input type="text" readonly class="long wide" data-bind="textInput: level.image">
+				<input type="button" value="...">
+				<input type="file" data-bind="event:
+				{change: () => uploadImage($element.files[0])}">
+			</div>
+
+			<div class="input-group">
+				<label>Background</label>
+				<input type="text" readonly class="long wide">
+				<input type="color" data-bind="event:
+				{change: () => level.background($element.value)}, value: level.background">
+			</div>
+
+
+			<div class="input-group">
+				<label>Score</label>
+				<input type="text" value="30" class="long" data-bind="textInput: level.score"/>
+			</div>
+
+			<div class="controls">
+				<input type="button" class="btn-ok" value="&#8594;" data-bind="click: nextState"/>
+				<input type="button" class="btn-ok" value="&#10003;" data-bind="click: saveLevel"/>
+				<input type="button" class="btn-cancel" value="&#10006;" data-bind="click: cancel"/>
+			</div>
+		</form>
+	</div>
+	<!-- /ko -->
+
+	
+	<!-- ko if: $root.state() == PAGE_STATE.L2 -->
+	<div class="whole-container">
+        <div class="problem-container">        
+            <div class="title-bar problems-obj">
+                <h1>All problems</h1>
+                <!--<div class="right-icons">
+                    <span class="icon-font button title-bar-button" title="search">&#59782</span>
+                    <span class="icon-font button title-bar-button" title="filter">&#59995</span>
+                    <span class="icon-font button title-bar-button" title="sort">&#59980 </span>
+                </div>-->
+            </div>
+            <div class="container list-panel">	
+                <ul data-bind="foreach: level.problemsUnused">
+                    <li data-bind="click: $parent.problemListClick" tabindex="-1">
+                        <span data-bind="text: $data.title"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="left-right-arrows">
+            <h1><span class="icon-font left-arrow" data-bind="click: addSelectedProblem">E</span></h1>
+            <h1><span class="icon-font right-arrow" data-bind="click: removeSelectedProblem">D</span></h1>
+            <!--<p><span class="left-arrow">&#8592</span></p>
+            <p><span class="right-arrow">&#8594</span></p>-->
+        </div>
+        <div class="large-container">
+            <div class="title-bar">
+                <h1 id="problem-text">Problems</h1>
+            </div>
+                <div class="container list-panel">	
+                    <ul data-bind="foreach: level.problemsUsed">
+                        <li data-bind="click: $parent.addProblemListClick" tabindex="-1">
+                            <span data-bind="text: $data.title"></span>
+                        </li>
+                    </ul>
+                </div>
+            <div class="controls">
+                <input type="button" class="btn-ok" value="&#8592;" data-bind="click: prevState"/>
+                <input type="button" class="btn-cancel" value="&#10006;" data-bind="click: cancel"/>
+                <input type="button" class="btn-ok" value="&#10003;" data-bind="click: saveLevel" /> 
+            </div>
+        </div>
+    </div>
+	<!--/ko-->
+	
+	</body>
+</html>
+

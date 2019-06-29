@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Libre lab</title>	
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="lib/codemirror/theme/mbo.css">
+        <script type="text/javascript" src="lib/codemirror/lib/codemirror.js"></script>
+        <script type="text/javascript" src="lib/codemirror/mode/python/python.js"></script>
+		<script src="lib/skulpt/skulpt.min.js" defer></script>
+		<script src="lib/skulpt/skulpt-stdlib.js" defer></script>
+
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+		<script src="lib/knockout-3.5.0.js" defer></script>
+		<script src="js/app.js" defer></script>
+		<script src="js/problems.js" defer></script>
+		<link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+	</head> 
+	<body>
+	<nav>
+		<div class="left long">
+				<h1 class="long"><span class="icon-pure_logo">A</span></h1>
+		</div>
+		<div class="right">
+			<div class="text">
+				<h1>Marina B</h1>
+				<h2>Logged in as instructor</h2>	
+			</div>
+			<span class="icon-font" id="user">&#59761 </span>	
+		</div>
+	</nav>	
+		
+	<!--PROBLEM LIST PANE-->
+	<!-- ko if: $root.state() == PAGE_STATE.LIST --> 
+	<div class="title-bar problems-obj">
+		<h1>All problems</h1>
+		<div class="right-icons">
+			<!--<span class="icon-font button title-bar-button" title="search">&#59782</span>
+			<span class="icon-font button title-bar-button" title="filter">&#59995</span>
+			<span class="icon-font button title-bar-button" title="sort">&#59980 </span>
+			<span class="icon-font button title-bar-button" title="edit">&vert;</span>-->
+			<!-- ko if: $root.selectedItem()-->
+			<span class="icon-font button title-bar-button" title="edit" data-bind="click: editProblem">&#59653</span>
+			<span class="icon-font button title-bar-button" title="delete" data-bind="click: deleteProblem">&#59820</span>
+			<!-- /ko -->
+		</div>
+	</div>
+	<div class="container body-button-panel">
+		<span class="new-group-btn problems-obj" data-bind="click: newProblem">New</span>
+	</div>
+	<div class="container list-panel">		
+		<ul data-bind="foreach: itemList">
+			<li data-bind="click: selectMe, style: { background: isSelected() ? 'lightblue' : 'white' }">					
+				<span data-bind="text: title"></span>
+			</li>				
+		</ul>
+	</div>		
+	<!-- /ko -->
+	
+	
+	<!--PROBLEM WIZARD NAVIGATION MENU-->
+<!-- ko if: $root.state() != PAGE_STATE.LIST --> 
+	<div class="title-bar problems-obj">
+        <h1 class="problem">New problem <span data-bind='text: $root.state()'>&nbsp;</span>/4: general</h1>
+    </div>
+
+	<!--PROBLEM WIZARD STEP 1: GENERAL-->
+    <div class="large-container" data-bind='visible: $root.state() != PAGE_STATE.LIST'>
+    <form>
+	<!-- ko if: $root.state() == PAGE_STATE.P1 --> 
+	<div class="input-group">
+		<label for="name">Name</label>
+		<input type="text" placeholder="Name" id="name" class="long" data-bind="textInput: problem.title"/>
+	</div>
+
+	<div class="input-group">
+		<label >Type</label>
+		<select class="wide long" data-bind="value: problem.type">
+			<option>--Select Type--</option>
+			<option>Code</option>
+			<option>Multiple choice</option>
+		</select>
+	</div>
+
+	<div class="textinput-group">
+		<label class="contents" >Comments</label>
+		<textarea data-bind="textInput: problem.comments"></textarea>
+	</div>
+
+	<div class="input-group">
+		<label>Weight</label>
+		<input type="text" placeholder="1" id="weight" class="long" 
+		data-bind="textInput: problem.weight">
+	</div>
+	
+	<div class="input-group">
+		<label>Tags</label>
+		
+		<div class="tag-input-group">
+			<input type="text" class="long" disabled/>    
+			<button class="remove-tag">X</button>
+		</div>
+		
+	</div>           
+	<div class="input-group">
+		<label></label>
+		<select class="long wide"></select>
+	</div>
+	<div class="input-group"> 
+		<label></label>   
+		<input type="text" class="long wide">
+		<input type="button" value="+">
+	</div>        
+	<!-- /ko -->
+	
+	<!--PROBLEM WIZARD STEP 2: INSTRUCTIONS-->	
+	<!-- ko if: $root.state() == PAGE_STATE.P2 --> 
+	<div class="textinput-group">
+		<label>Instructions</label>
+		<textarea></textarea>
+	</div>
+
+	<div class="textinput-group">
+		<label >Starter Code</label>
+		<textarea id="smallbox"></textarea>
+	</div>        
+    <!-- /ko -->
+	
+	<!--PROBLEM WIZARD STEP 3: SOLUTION-->
+	
+	
+	<!--PROBLEM WIZARD STEP 4: TESTS--> 
+	<!-- ko if: $root.state() == PAGE_STATE.P3 --> 	
+	<div class="input-group">
+		<label>Test Cases</label>
+		<input type="text" placeholder="" id="name" class="long wide"/>
+		<input type="button" value="+">  
+	</div>
+	<!-- /ko -->
+	
+
+	<div class="controls">
+		<!-- ko if: $root.state() >= PAGE_STATE.P2 --> 
+		<input type="button" class="btn-ok" value="&#8592;" data-bind="click: prevState" data-bind='visible: $root.state() >= PAGE_STATE.P2'/>
+		<!-- /ko -->
+		<!-- ko if: $root.state() < PAGE_STATE.P3 --> 
+		<input type="button" class="btn-ok" value="&#8594;" data-bind="click: nextState"/>
+		<!-- /ko -->
+		<input type="button" class="btn-ok" value="&#10003;" data-bind="click: saveProblem"/>
+		<input type="button" class="btn-cancel" value="&#10006;" data-bind="click: cancel"/>
+	</div>
+	</form>
+	</div>
+	<!-- /ko -->
+	</body>
+</html>
+

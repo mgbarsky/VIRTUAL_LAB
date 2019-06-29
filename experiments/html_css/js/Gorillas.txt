@@ -1,0 +1,17 @@
+def Gorillas():
+    for i in range(100):
+        print(i)
+
+def Semicolons():
+    print("We don't use those here.)
+    return false
+
+def CurlyBraces():
+    print("What in god's name have you brought onto this cursed plane?!);
+    return false;
+
+def main:
+    Gorillas()
+
+if __name__ == 'main':
+    main()

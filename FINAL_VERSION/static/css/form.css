@@ -1,0 +1,239 @@
+/* general form styling */
+
+
+form{
+	width: 100%;
+}
+
+form input{
+	box-sizing: border-box;
+	padding: 1ex;
+	border: thin solid rgba(0,0,0,0.2);
+}
+
+input.long, select.long {
+	min-width: 70%;
+	padding: 6px 12px;
+	font-size: 16px;
+}
+
+select.wide {
+	height: 34px;
+}
+
+form input[type="button"]{
+	border: none;
+	cursor: pointer;
+	color: white;
+}
+
+form input[type="button"]:active{
+	background-color: rgb(15, 161, 211);	
+	outline: 0;
+}
+/* invisible button for choosing file (substituted with custom styled button)*/
+form input[type="file"]{
+	z-index: 2;
+	cursor: pointer;
+	width: 8%;
+	height: 70%;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+form input[type="color"]{
+	z-index: 2;
+	cursor: pointer;
+	width: 8%;
+	height: 100%;
+	opacity: 1;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+/* used together with  div.input-group and input(which is the rest 70%) */
+form label{
+	display: inline-block;
+	width: 30%;
+	font-size: 1rem;
+}
+
+.error {
+	color: red;
+}
+
+form .error{
+	color: red;
+	margin-top: 1ex;
+}
+
+form .error span{
+	margin: 0.1em;
+}
+form .error p{
+	width: 100%;
+	display: inline;
+	font-size: 0.85em;
+}
+
+form>h2{
+	margin-bottom: 1rem;
+}
+
+/* used together with label and input in the form */
+.input-group{
+	width: 100%;
+	position: relative;
+	font-size: 0;
+	overflow: hidden;
+	margin-bottom: 3%;
+}
+
+.textinput-group{
+	width: 100%;
+	position: relative;
+	height: 3cm;
+	margin-bottom: 0.3cm;
+	overflow: default;
+}
+
+/* represents custom button for choosing file; placed insted <input type="file">*/
+.input-group input[type="button"]{
+	background-color: white;
+	position: absolute;
+	margin: 0;
+	color: black;
+	
+	right: 0;
+	border: thin solid rgba(0,0,0,0.2);
+	height: 34px;
+	width: 8%;
+}
+
+.tag-input-group {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	width: 70%;
+	margin-left: 125px;
+}
+.tag-input-group > input {
+	width: 100%;
+	border: thin solid rgba(0,0,0,0.2);
+}
+
+.remove-tag {
+	border: none;
+	height: 45px;
+	width: 35px;
+	cursor: pointer;
+	border-top: thin solid rgba(0,0,0,0.2);
+	border-bottom: thin solid rgba(0,0,0,0.2);
+	border-right: thin solid rgba(0,0,0,0.2);
+}
+
+.input-group h1{
+	font-size: 40px;
+}
+
+/* for the group type icon*/
+span.form-label{
+	display: inline-block;
+	font-size: large;
+	margin-top: 0.5ex;
+}
+
+/* Ok Cancel Next buttons at the bottom of the form*/
+.controls{
+	margin-top: 20px;
+	text-align: right;
+}
+
+.controls input[type="button"]{
+	font-size: 1.3em;
+	width: 1.3cm;
+	height: 1.3cm;
+	outline: 0;
+}
+
+.controls .btn-ok{
+	background-color: rgb(20,168,100);
+	color: white;
+}
+
+.controls .btn-cancel{
+	background-color: rgb(240,49,49);
+	color: white;
+}
+
+label.contents{
+	margin-top: 10%;
+}
+
+form textarea{
+	box-sizing: border-box;
+	padding: 1ex;
+	border: thin solid rgba(0,0,0,0.2);
+	width: 70%;
+	height: 100%;
+	padding: 6px 12px;
+	font-size: 16px;
+	float: right;
+	resize: none;
+}
+
+
+/*added */
+.left-arrow, .right-arrow {
+	font-size: 1.5em;
+	cursor: pointer;
+/*	border-radius: 50%;
+	padding: 0px;
+	width: 50px;
+	height: 50px; */
+
+	background-color: white;
+	border-color: black;
+	margin-bottom: 30px;
+}
+
+.left-arrow {
+	color: rgb(20,168,100);
+}
+
+.right-arrow {
+	color: rgb(240,49,49);
+}
+
+.whole-container .textinput-group {
+	height: 400px;
+}
+
+.left-right-arrows {
+	margin-top: 200px;
+	text-align: center;
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.whole-container textarea {
+	width: 100%;
+}
+
+.problem-container .right-icons {
+	font-size: 1.4em;
+}
+
+#problem-text {
+	color: black;
+}
+
+/*for login */
+input.login-input {
+	width: 100%;
+	padding: 1ex;
+	border: thin solid rgba(0,0,0,0.2);
+}
+

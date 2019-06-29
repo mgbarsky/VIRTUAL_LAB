@@ -1,0 +1,103 @@
+/* title-bar */
+.title-bar {
+	margin-top:80px;
+	min-width: 7cm;
+	position: relative;	
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /* modified */
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.title-bar h1 {
+	color: rgb(255, 255, 255);
+	font-size: 1.5em;
+	font-weight: 400;
+	display: inline-block;
+	margin-left: 40px;
+}
+
+
+.title-bar h1 span {
+	cursor: pointer;
+}
+
+
+/* right-icons for title bar */
+.right-icons {
+	 margin-left: 70px; /*needed for aligning when title bar becomes very small*/
+	font-size: 1.5em;
+	display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+	z-index: 1;
+	right: 0;
+}
+
+.right-icons .icon-font{
+	margin-right: 0.5em;
+	padding: 0.5em;
+	color: rgb(255, 255, 255);
+}
+
+.right-icons .icon-font:hover {
+	background-color: rgba(200,200,240,0.7);
+}
+
+.right-icons .drop-down {
+	text-decoration:none;
+	display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+	cursor: pointer;
+	position: relative;
+}
+
+.drop-down .drop-down-list-container{
+	width:6cm;
+	display: none;
+	position: absolute;
+	border: none;
+	top: 2em;
+	color: white;
+}
+
+.drop-down:hover .drop-down-list-container {
+	display: block;
+	right: 0;
+}
+
+.drop-down:hover > .dropdown-form-container {
+	display: inline-block;
+	right: 0;
+}
+
+.dropdown-form-container{
+	position: absolute;
+	top: 2em;
+	display: none;
+	padding: 1ex;
+}
+
+.dropdown-form-container .input-group input[type="button"]{
+	width: 10%
+}
+/* end of right-icons */
+/* end of title-bar */
+
+a {
+	color: inherit;
+	text-decoration: none;
+}

@@ -1,0 +1,18 @@
+/*order matters*/
+/*don't use import in production: bad performance! */
+@import url("main.css");
+@import url("nav.css");
+@import url("board.css");
+@import url("containers.css");
+@import url("list.css");
+@import url("lab.css");
+@import url("form.css");
+/*@import url("inputs.css");
+@import url("header.css");
+@import url("squarebuttons.css");
+
+
+@import url("tree.css");
+
+@import url("containers.css");
+@import url("tabletCss/tabletForm.css");*/

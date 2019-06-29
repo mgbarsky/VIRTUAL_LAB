@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Libre lab</title>
+		<link rel="stylesheet" href="css/style.css">
+
+		<link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="lib/codemirror/theme/mbo.css">
+        <script type="text/javascript" src="lib/codemirror/lib/codemirror.js"></script>
+        <script type="text/javascript" src="lib/codemirror/mode/python/python.js"></script>
+
+		<script src="lib/skulpt/skulpt.min.js" defer></script>
+		<script src="lib/skulpt/skulpt-stdlib.js" defer></script>
+		<script src="lib/knockout-3.5.0.js" defer></script>
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+		<script src="js/sample_data.js" defer></script>
+		<script src="js/local_storage.js" defer></script>
+		<script src="js/app.js" defer></script>
+		<script src="js/templates.js" defer></script>
+		<script src="js/gui.js" defer></script>
+		<script src="js/navigation.js" defer></script>
+		<script src="js/problems.js" defer></script>
+		<script src="js/formlab.js" defer></script>
+		<script src="js/smalllab.js" defer></script>
+
+		<script src="js/tag_testing.js" defer></script>
+
+		<link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+
+	</head>
+	<body>
+		<!-- List problems -->
+		<!-- ko if: pageState() === PAGE_STATE.LIST -->
+			<navbar-list></navbar-list>
+			<options-menu></options-menu>
+			<problem-list></problem-list>
+		<!-- /ko -->
+
+		<!-- New problem -->
+		<navbar-new data-bind="visible: pageState() !== PAGE_STATE.LIST"></navbar-new>
+		<np-1 data-bind="visible: (pageState() === PAGE_STATE.NP1) || (pageState() === PAGE_STATE.EP1)"></np-1>
+		<np-tags data-bind="visible: (pageState() === PAGE_STATE.NP1) || (pageState() === PAGE_STATE.EP1)"></np-tags>
+		
+		<np-2 data-bind="visible: (pageState() === PAGE_STATE.NP2) || (pageState() === PAGE_STATE.EP2)"></np-2>
+		<np-3 data-bind="visible: (pageState() === PAGE_STATE.NP3) || (pageState() === PAGE_STATE.EP3)"></np-3>
+		<np-4 data-bind="visible: (pageState() === PAGE_STATE.NP4) || (pageState() === PAGE_STATE.EP4)"></np-4>
+	</body>
+</html>
+
