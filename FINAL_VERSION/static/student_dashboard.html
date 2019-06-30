@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Libre lab</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">       
+
+        <link rel="stylesheet" href="css/style.css">
+
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+        <script src="lib/knockout-3.5.0.js" defer></script>
+
+        <script src="js/app.js" defer></script>
+        <script src="js/student_dashboard_2.js" defer></script>
+
+        <link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+    </head>
+    <body>
+        <nav>
+            <div class="left long">
+                <h1 class="long"><span class="icon-pure_logo">A</span></h1>
+                <div class="centered">
+                    <h1>Game: <span data-bind="text: game_name"></span></h1>
+                    <h2>Total Score: 32</h2>
+                </div>
+            </div>
+            <div class="right">
+                <div class="text">
+                    <h1 data-bind="text: screen_name"></h1>
+                    <h2>Logged in as student</h2>	
+                </div>
+                <div>
+                    <span class="icon-font" id="user">&#59761 </span>	
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- ko if: $root.state() == PAGE_STATE.DASHBOARD --> 
+        <div class="student-dashboard-container">
+            <!-- for side scrolling container-->
+            <div>
+                <div>
+                    <span class="icon-font rect-button-left-arrow">&#59932</span>
+                </div>
+                <div class="student-button-board" data-bind="foreach: levels_obj">
+                
+                    <div class="rect-button-with-caption" data-bind="click: $parent.go_to_level">
+                        <div class="rect-button problems-obj">
+                            <div>7/10</div>
+                            <img src="user_images/variable.jpg">
+                            <div>
+                                <progress value="70" max="100"/>
+                            </div>
+                        </div>
+                        <p data-bind="text: title"></p> 
+                    </div>
+                    
+                </div>
+                <div>
+                    <span class="icon-font rect-button-right-arrow">&#59932</span>
+                </div>
+            </div>
+
+            <!-- for problems and challenge container-->
+            <div>
+                <div class="student-problems-container">
+                    <h3>Problem of the day</h3>
+                    <p>Move turtles extra extra extra extra extra extra extra extra extra extra extra</p>
+                </div>
+                <div class="challenge-container">
+                    <h3>Next scheduled challenge</h3>
+                    <p>Function challenge - Oct 15</p>
+                </div>
+            </div>
+
+            <!-- for leaderboard -->
+            <div>
+                <div class="leaderboard-container">
+                    <h3>Leaderboard</h3>
+                    <div>
+                        <h4>Rank</h4>
+                        <hr>
+                        <p>1</p>
+                        <p>2</p>
+                    </div>
+                    <div>
+                        <h4>User</h4>
+                        <hr>
+                        <p>mbarsky</p>
+                        <p>Arthur</p>
+                    </div>
+                    <div>
+                        <h4>Score</h4>
+                        <hr>
+                        <p>100</p>
+                        <p>99</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <!-- ko if: $root.state() == PAGE_STATE.LEVEL-->
+        <div class="title-bar problems-obj">
+            <h1 data-bind="text: level.title"></h1>
+        </div>
+        <div class="student-list-container">
+            <div class="check-board">
+                <div class="check-board-square problems-correct"></div>
+                <div class="check-board-square problems-correct"></div>
+                <div class="check-board-square problems-incorrect"></div>
+                <div class="check-board-square problems-correct"></div>
+                <div class="check-board-square problems-correct"></div>
+                <div class="check-board-square problems-incorrect"></div>
+                <div class="check-board-square problems-unfinished"></div>
+            </div>
+        </div>
+        <div class="container list-panel">	
+            <ul data-bind="foreach: problems_list">
+                <li data-bind="click: $parent.go_to_problem">
+                    <span class="icon-font green">F</span>
+                    <span data-bind="text: title"></span>
+                </li>
+            </ul>
+        </div>    
+        <!-- /ko -->
+
+        <!-- ko if: $root.state() == PAGE_STATE.PROBLEM-->
+        <div class="title-bar problems-obj">
+            <h1 class="problem"> <span data-bind="text: level.title"></span> / <span data-bind="text: problem.title"></span></h1>
+        </div>
+    
+        <div class="large-container">
+            <form>
+                <div class="input-group">
+                    <label for="name">Problem</label>
+                    <input type="text" placeholder="Name" id="name" class="long" readonly data-bind="value: problem.title"/>
+                </div>
+
+                <div class="input-group">
+                    <label>Weight</label>
+                    <input type="text" placeholder="1" id="weight" class="long" readonly data-bind="value: problem.weight">
+                </div>
+
+                <div class="textinput-group">
+                    <label>Instructions</label>
+                    <textarea data-bind="textInput: problem.instructions" readonly></textarea>
+                </div>
+            
+                <div class="textinput-group">
+                    <label>Code</label>
+                    <textarea data-bind="textInput: problem.starter_code"></textarea>
+                </div> 
+
+                <div class="textinput-group">
+                    <label>Console</label>
+                    <textarea readonly></textarea>
+                </div>      
+                
+                <div class="controls">
+                    <input type="button" class="btn-ok" value="&#9658;" title="Run">
+                    <input type="button" class="btn-ok" value="&#10003;" data-bind="click: save_student_problem"/>
+                    <input type="button" class="btn-cancel" value="&#10006;" data-bind="click: prevState"/>
+                </div>
+            </form>
+        </div>
+        <!-- /ko -->
+          
+
+    </body>
+</html>

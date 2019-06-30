@@ -1,0 +1,175 @@
+nav {
+	cursor:default;	
+	box-sizing: border-box; 
+	
+	position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 5;
+
+    height: 80px;
+	
+	display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    
+	-webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    
+	-webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    
+	-webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    
+	-webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+	
+	background-color: rgba(224,224,224,0.7);	
+}
+
+/*--left part of the nav - navigation and breadcrumbs*/
+nav .left {	
+	margin: 0px;	
+	font-weight: 400;	
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+	-webkit-justify-content: flex-start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	
+	-webkit-align-items: flex-start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+}
+
+nav h1 {
+	font-size: 1.5em;
+	font-weight: 400;	
+}
+
+nav h2{
+	margin-left: 40px;
+	font-size: 1em;
+	font-weight: 400;	
+}
+
+nav .icon-font{
+	position: relative;
+	font-weight: 400;
+	padding-right: 10px;
+	cursor: pointer;
+}
+
+nav span:hover{
+	color: rgba(144,144,144,0.5);
+}
+/*--done with nav - left part */
+
+/* right panel which may contain text or buttons */
+.right {
+	margin: 30px;
+	top: 0;
+	right: 0px;	
+	min-width: 7cm;
+
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	-ms-flex-wrap: nowrap;
+	flex-wrap: nowrap;
+	-webkit-justify-content: flex-end;
+	-ms-flex-pack: end;
+	justify-content: flex-end;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.right .text {	
+	display: inline-block;	
+	text-align:right;		
+}
+
+.right .text h1 {
+	font-size: 1.5em;
+	font-weight: 400;
+}
+
+.right .text h2 {
+	font-size: 1em;
+	font-weight: 400;
+}
+
+.right  #user {	
+	font-size: 3em;
+	font-weight: 400;	
+	display:inline-block;
+	margin-left: 8px;
+}
+
+.right  #properties {
+	font-size: 2em;	
+	font-weight: 400;	
+	display:inline-block;
+	padding: 0.45ex;
+}
+
+.right .buttons span:hover{
+	outline: thin solid rgba(0,0,0,0.2);
+}
+
+.right span:hover{
+	cursor: pointer;
+	color: rgba(144,144,144,0.5);
+}
+
+.icon-pure_logo{
+	font-size: 5em;
+	bottom: 30%;
+	left: 10%;
+	height: 100%;
+	position: relative;
+	color: #1870b9;
+	font-family: "Liberty"
+}
+
+h1.problem{
+	height: 2em;
+	margin-top: 0.5em;
+}
+
+div.long, h1.long {
+	height: 100%;
+}
+
+div.centered{
+	margin: auto;
+}
+
+/* ------ end of nav right-group */
+/* ------ End of nav */
+
+/* added */
+.left h1:nth-child(2) {
+	margin-top: 18px;
+}

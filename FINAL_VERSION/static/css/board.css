@@ -1,0 +1,341 @@
+main {
+    margin-top: 100px;
+	width: 100vw;
+	min-width:calc(15.9cm + 3em);
+
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;	
+	
+	-webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+	
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+
+	flex-wrap: wrap; /*added */
+
+	overflow-x: hidden; /*added */
+}
+
+/*
+* Square buttons, Square buttons with caption
+* and Square button group
+*/
+/*windows metro style*/
+
+/*square button group*/
+.square-button-group{
+	width: 60vw;
+
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	 -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+	
+}
+
+
+/*square button widget*/
+.square-button {
+	cursor: pointer;
+	outline: none;
+	overflow:hidden;
+	margin: 0.5rem 0.5rem;
+	position: relative; /*If removed the parent container of its children will be html*/
+	width: 3.3cm;
+	height: 3.3cm;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+/*Text inside square buttons*/
+.square-button h2 {
+	text-align: left;
+	display: block;
+	color: white;
+	position:absolute;
+	left:0;
+	bottom:0;
+	margin-bottom:0.1em;
+	margin-left:0.25em;
+	font-size: 1em;
+	font-family: Calibri;
+	white-space:wrap;
+}
+
+/*icon on square buttons*/
+.square-button span {
+	font-size: 2.5em;
+	display:inline-block;
+}
+
+/*transition effects on mouse events*/
+.square-button:hover {
+	outline: black solid 3px;
+}
+
+.square-button:active{
+	transform: scale(1.02);
+	-webkit-filter:saturate(1.09);
+	outline:none;
+}
+
+.square-button:active span {
+	text-shadow: 0 -1px 1px rgba(175, 49, 95, .9), 0 0 5px rgba(255, 255, 255, .8);
+}
+
+/*square button widget with caption*/
+.square-button-with-caption{
+	width: 3.3cm;
+	margin: 0.5em 0.5em;
+	display: inline-block;
+}
+
+/*square button in square button with caption*/
+.square-button-with-caption .square-button{
+	cursor: pointer;
+	position:relative;
+	outline: none;
+	height: 3.3cm;
+	width: 3.3cm;
+	min-width: 3cm;
+	min-height: 3cm;
+	margin: 0;
+
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+/*caption in square-button-with-caption*/
+.square-button-with-caption p{
+	cursor:pointer;
+	font-size:1em;
+	letter-spacing: 0.05em;
+	text-align: center;
+}
+
+/*Icon on the square button in square-button-with-caption*/
+.square-button-with-caption .square-button span{
+	font-size: 2em;
+}
+
+/*transition effects for mouse events*/
+
+.square-button-with-caption .square-button:active {
+	/*transform: scale(1.02);*/
+	-webkit-filter:saturate(1.09);
+	outline:none;
+}
+
+.square-button-with-caption:hover  p{
+	/*font-weight: bold;*/		
+}
+
+.square-button-with-caption:active p{
+	font-weight: bold;
+}
+
+/* Entity types for color-coding of different app parts*/
+.problems-obj{
+	background-color: rgb( 222,152,53);
+}
+.problems-obj.square-button:hover{
+	outline: rgba(239, 203, 154, 1) solid 3px;
+}
+.problems-obj.square-button:active{
+	outline: none;
+}
+
+.levels-obj{
+	background-color: rgb(84, 129, 59);
+}
+
+.levels-obj.square-button:hover{
+	outline: rgba(155, 237, 199, 1) solid 3px;
+}
+
+.levels-obj.square-button:active{
+	outline: none;
+}
+
+.games-obj{	
+	background-color: rgb( 219,71,51);
+}
+
+.games-obj.square-button:hover{
+	outline:rgba(237, 165, 155, 1) solid 3px;
+}
+.games-obj.square-button:active{
+	outline: none;
+}
+
+.analytics-obj{
+	background-color: rgb(51,63,80);
+}
+.analytics-obj.square-button:hover{
+	outline:rgba(122, 141, 170, 1) solid 3px;
+}
+.analytics-obj.square-button:active{
+	outline: none;
+}
+
+
+.challenges-obj{
+	background-color: rgb(58,143,223);
+}
+.challenges-obj.square-button:hover{
+	outline:rgba(154, 198, 239, 1) solid 3px;
+}
+.challenges-obj.square-button:active{
+	outline: none;
+}
+
+
+/*student check board */
+.check-board {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-webkit-align-content: center;
+	-ms-flex-line-pack: center;
+	align-content: center;
+	
+	max-width: 100%;
+	flex-wrap: wrap;
+}
+
+.check-board-square {
+	outline: none;
+	overflow:hidden;
+	border: thin solid rgba(0,0,0,0.2);
+	position: relative; /*If removed the parent container of its children will be html*/
+	width: 20px;
+	height: 20px;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+
+/*entities for checkboard status */
+.problems-correct {
+	background-color: green;
+}
+
+.problems-incorrect {
+	background-color: red;
+}
+
+.problems-unfinished {
+	background-color: rgb(169,169,169);
+}
+
+
+/*for student dashboard rectangle buttons  */
+.student-button-board {
+	overflow-y: hidden;
+    white-space: nowrap;
+
+    max-width: 100%;
+	overflow-x: auto;
+}
+
+.rect-button-with-caption{
+	/*width: 3.5cm;*/
+	display: inline-block;
+}
+
+.rect-button {
+	cursor: pointer;
+	outline: none;
+	overflow:hidden;
+	position: relative; /*If removed the parent container of its children will be html*/
+	width: 3cm;
+	height: 5cm;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	
+	flex-direction: column;
+
+	border: 1px solid black;
+	color: white;
+}
+
+.rect-button-with-caption p{
+	cursor:pointer;
+	font-size:1em;
+	letter-spacing: 0.05em;
+	text-align: center;
+}
+
+.rect-button img {
+	width: 70px;
+}
+
+progress {
+	width: 113px;
+}
+
+/*left and right arrow for student rect board */
+.rect-button-right-arrow, .rect-button-left-arrow {
+	font-size: 2em;
+	position: absolute;
+	cursor: pointer;
+}
+
+.rect-button-right-arrow {
+	right: 20vw;
+	top: 180px;
+}
+
+.rect-button-left-arrow {
+	left: 20vw;
+	top: 183px;
+	transform: rotate(180deg);
+	z-index: 3;
+}
+
+
+
+
+

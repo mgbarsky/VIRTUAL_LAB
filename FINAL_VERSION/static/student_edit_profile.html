@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Libre lab</title>	
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+        <script src="lib/knockout-3.5.0.js" defer></script>
+
+        <script src="js/app.js" defer></script>
+        <script src="js/student_edit_profile.js" defer></script>
+        
+		<link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+	</head> 
+	<body>
+        <nav>
+            <div class="left long">
+                    <h1 class="long"><span class="icon-pure_logo">A</span></h1>
+            </div>
+        </nav>	
+            
+        <div class="student-dashboard-container">
+            <div>
+                <form>
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" class="long" data-bind="value: student_info.email" required/>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Screen Name</label>
+                        <input type="text" class="long" data-bind="textInput: student_info.screen_name" required/>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" class="long" data-bind="textInput: student_info.password"/>
+                    </div>
+
+                    <div class="input-group">
+                        <label>First Name</label>
+                        <input type="text" class="long" data-bind="textInput: student_info.first_name"/>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Last Name</label>
+                        <input type="text" class="long" data-bind="textInput: student_info.last_name"/>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Image</label>
+                        <input type="text" readonly class="long wide" data-bind="textInput: student_info.image">
+                        <input type="button" value="...">
+                        <input type="file" data-bind="event:{change: () => uploadStudentImage($element.files[0])}">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Date of Birth</label>
+                        <input type="date" class="long" data-bind="value: student_info.dob"/>
+                    </div>
+        
+                    <div class="input-group">
+                        <label>Background</label>
+                        <input type="text" readonly class="long wide">
+                        <input type="color" data-bind="event:{change: () => student_info.background($element.value)}, value: student_info.background">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Select Game</label>
+                        <select class="wide long" data-bind="options: course_list,optionsText: 'title',value: selectedCourseId, optionsCaption: 'Select Game...', event: {change: onChangeOptions}" ></select>
+                    </div>
+        
+                    <div class="controls">
+                        <input type="button" class="btn-ok" value="&#10003;" data-bind="click: saveStudentInfo"/>
+                        <input type="button" class="btn-cancel" value="&#10006;" onclick="window.location.href='index.html'"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+	</body>
+</html>
+

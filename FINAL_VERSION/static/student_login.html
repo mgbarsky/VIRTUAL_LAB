@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Libre lab</title>	
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="lib/jquery-3.4.1.min.js" defer></script>
+        <script src="lib/knockout-3.5.0.js" defer></script>
+
+        <script src="js/app.js" defer></script>
+        <script src="js/student_login.js" defer></script>
+        
+		<link rel="icon" href="img/pure_logo.png" type="image/x-icon">
+	</head> 
+	<body>
+        <nav>
+            <div class="left long">
+                    <h1 class="long"><span class="icon-pure_logo">A</span></h1>
+            </div>
+        </nav>	
+            
+        <div class="student-dashboard-container">
+            <div>
+                <h1>Login</h1>
+            </div>
+            <div>
+                <input type="text" placeholder="Email" class="login-input" data-bind="textInput: student_login_info.email" required/>
+            </div>
+            
+            <div>
+                <input type="password" placeholder="Password" class="login-input" data-bind="textInput: student_login_info.password"/>
+            </div>
+           
+            <div>
+                <input type="button" value="Login" class="login-input" data-bind="click: checkStudentLoginInfo"/>
+            </div>
+
+            <!-- ko if: isLoginError() == true  -->
+            <div>
+                <p class="error" data-bind="text: error_text"></p>
+            </div>
+            <!-- /ko -->
+        </div>
+	</body>
+</html>
+
