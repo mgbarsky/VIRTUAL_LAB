@@ -2,22 +2,19 @@
 drop table if exists Entity;
 
 drop table if exists Problem;
-drop table if exists Bundle;
-drop table if exists Course;
+drop table if exists Level;
+drop table if exists Game;
 drop table if exists Challenge;
 drop table if exists Tag;
-drop table if exists Student;
+drop table if exists Player;
 drop table if exists Test;
 
-drop table if exists BundleSchedule;
-drop table if exists CourseSchedule;
-
 drop table if exists ProblemTag;
-drop table if exists BundleProblem;
-drop table if exists CourseBundle;
-drop table if exists CourseChallenge;
-drop table if exists CourseStudent;
-drop table if exists StudentProblem;
+drop table if exists LevelProblem;
+drop table if exists GameLevel;
+drop table if exists GameChallenge;
+drop table if exists GamePlayer;
+drop table if exists PlayerSolution;
 
 create table Entity(
 	id CHAR(128) PRIMARY KEY,
@@ -50,18 +47,22 @@ create table Problem(
 	weight INT,
 	instructions TEXT,
 	starter_code TEXT,
-	solution TEXT
+	solution TEXT,
+	start_time DATE,
+	end_time DATE
 );
 
-create table Bundle(
+create table Level(
 	id INT PRIMARY KEY,
 	title VARCHAR(255) UNIQUE,
 	image VARCHAR(1024),
 	background VARCHAR(128),
-	score INT
+	score INT,
+	start_time DATE,
+	end_time DATE
 );
 
-create table Course(
+create table Game(
 	id INT PRIMARY KEY,
 	title VARCHAR(255),
 	language VARCHAR(128)
@@ -79,7 +80,7 @@ create table Challenge(
 	end_time DATE
 );
 
-create table Student(
+create table Player(
 	id INT PRIMARY KEY,
 	email VARCHAR(128) UNIQUE,
 	screen_name VARCHAR(255) UNIQUE,
@@ -99,21 +100,6 @@ create table Test(
 	PRIMARY KEY (problem_id, test_id)
 );
 
-/* instances of entities - tables*/
-create table BundleSchedule(
-	bundle_schedule_id INT PRIMARY KEY,
-	bundle_id INT,
-	start_time DATE,
-	end_time DATE
-);
-
-create table CourseSchedule(
-	course_schedule_id INT PRIMARY KEY,
-	course_id INT,
-	start_time DATE,
-	end_time DATE
-);
-
 /* relationship tables: one-to-many and many-to-many*/
 create table ProblemTag(
 	problem_id INT,
@@ -121,38 +107,38 @@ create table ProblemTag(
 	PRIMARY KEY (problem_id, tag_id)
 );
 
-create table BundleProblem(
-	bundle_id INT,
+create table LevelProblem(
+	level_id INT,
 	problem_id INT,
-	PRIMARY KEY (bundle_id, problem_id)
+	PRIMARY KEY (level_id, problem_id)
 );
 
-create table CourseBundle(
-	course_id INT,
-	bundle_id INT,
-	PRIMARY KEY (course_id,
-			bundle_id)
+create table GameLevel(
+	game_id INT,
+	level_id INT,
+	PRIMARY KEY (game_id,level_id)
 );
 
-create table CourseChallenge(
-	course_schedule_id INT,
+create table GameChallenge(
+	game_id INT,
 	challenge_id INT,
-	PRIMARY KEY (course_schedule_id,
-			challenge_id)
+	PRIMARY KEY (game_id, challenge_id)
 );
 
-create table CourseStudent(
-	course_id INT,
-	student_id INT,
-	PRIMARY KEY (course_id,
-			student_id)
+create table GamePlayer(
+	game_id INT,
+	player_id INT,
+	PRIMARY KEY (game_id, player_id)
 );
 
-create table StudentProblem(
-	student_id INT,
-	bundle_schedule_id INT,
+create table PlayerSolution(
+	player_id INT,
+	game_id INT,
+	level_id INT,
 	problem_id INT,
-	time_minutes FLOAT,
+	start_time DATE,
+	end_time DATE,
 	solution TEXT,
-	grade FLOAT
+	score FLOAT,
+	PRIMARY KEY (player_id, problem_id, end_time)
 );

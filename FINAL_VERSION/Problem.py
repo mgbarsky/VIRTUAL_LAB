@@ -22,6 +22,20 @@ def get_problems(conn, columns):
     return objects, error
 
 
+# get list of all problems with specified columns
+def get_problems_by_level(conn, level_id):
+    rows, error = db_get_level_problems(conn, level_id)
+
+    if rows is None:
+        return rows, error
+
+    objects = []
+    for row in rows:
+        objects.append(row_to_dictionary(row, ["id", "title"]))
+    
+    return objects, error
+
+
 def get_problem(conn, id):  # Get problem by ID
     # construct the full problem object
     # 1. First get all the fields from the Problem table

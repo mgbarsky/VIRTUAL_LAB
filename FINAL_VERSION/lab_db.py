@@ -2,11 +2,16 @@
 Application-specific database operations.
 All sql statements have to be defined here - to avoid
 changing models in case we need to adjust sql
-to a specific dbms
+to a specific DBMS
 
-All functions here return a tuple:
+All get functions here return a tuple:
 first element of the tuple is a result,
-second - error message if error occurred
+second - error message if error occurred.
+
+All save/delete functions return result, error
+Here result is whatever is returned by DB driver.
+We assume that in case of failure result is None 
+- but that has to be tested. (TBD)
 """
 from general_db import *
 
@@ -99,6 +104,7 @@ def db_insert_problem(conn, problem_obj):
 def db_delete_problem(conn, id):
     sqls = []
     param_lists = []
+    
     # delete problem tags
     tag_sql = "DELETE FROM ProblemTag WHERE problem_id = :problem_id"
     tag_params = {'problem_id': id}
@@ -130,7 +136,7 @@ def db_update_problem(conn, problem_obj):
     # call delete
     result, error = db_delete_problem(conn, problem_obj["id"])
     if result is None:
-        return None, "Failed to update problem: database error"
+        return None, "Failed to update(delete) problem: database error"
 
     # call new
     result, error = db_insert_problem(conn, problem_obj)
@@ -158,7 +164,7 @@ def db_get_problem_tags(conn, problem_id):
 
     params = {'problem_id': problem_id};
     rows, error = db_query(conn, sql, params)
-    print("inside db get tags",rows)
+    
     if rows is None:
         error = "Error while reading Tags for problem {}".format(problem_id)
     return rows, error
@@ -172,8 +178,9 @@ def db_get_tests(conn, problem_id):
     params = {'problem_id': problem_id};
     rows, error = db_query(conn, sql, params)
     if rows is None:
-        error = "Error while reading Tests for problem {}".format(problem_id)
+        error = "Error while reading tests for problem {}".format(problem_id)
     return rows, error
+
 
 def db_get_levels(conn, columns):  # Get list of all levels with specified columns
     sql = "SELECT " + columns + " FROM Bundle;"

@@ -1,5 +1,6 @@
 from lab_db import *
 from utils import *
+import Level
 
 COLUMNS = ['id', 'title', 'language']
 
@@ -34,15 +35,15 @@ def get_game(conn, id):  # Get problem by ID
 
     full_game = row_to_dictionary(game, COLUMNS)
 
-    # 2. Now get all the tags from ProblemTag table
-    game_bundles, error = db_get_game_bundles(conn, id)
-    game_bundles_array = []
+    # 2. Now get all the levels GameBundle table
+    game_levels, error = Level.get_levels_by_game(conn, id)
+    
+    levels = []
 
-    if game_bundles is not None:
-        for bundle in game_bundles:
-            temp_data = row_to_dictionary(bundle, ["id", "title"])
-            game_bundles_array.append(temp_data)
-        full_game["levels"] = game_bundles_array
+    if game_levels is not None:
+        for level in game_levels:
+            levels.append(row_to_dictionary(level, ["id", "title"]))
+        full_game["levels"] = levels
 
     return full_game, error
 
